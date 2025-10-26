@@ -27,4 +27,15 @@ async function apiPut(endpoint, data) {
   return await response.json();
 }
 
-export { apiGet, apiPost, apiPut };
+async function apiDelete(endpoint, data) {
+  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  if (!response.ok) throw new Error("Erro na requisição DELETE");
+  return await response.json();
+}
+
+
+export { apiGet, apiPost, apiPut, apiDelete };

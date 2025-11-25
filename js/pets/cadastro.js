@@ -8,8 +8,12 @@ async function cadastrarPet() {
     nome: formData.get("nome"),
     especie: formData.get("especie"),
     raca: formData.get("raca"),
-    idade: parseInt(formData.get("idade")),
-    peso: parseFloat(formData.get("peso"))
+    peso_atual: parseFloat(formData.get("peso_atual")),
+    porte: formData.get("porte"),
+    sexo: formData.get("sexo"),
+    castrado: parseInt(formData.get("castrado")),
+    data_nascimento: formData.get("data_nascimento"),
+    observacoes_saude: formData.get("observacoes_saude")
   };
 
   try {

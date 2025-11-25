@@ -1,4 +1,4 @@
-import { apiPost } from "./api.js";
+import { apiPost } from "../api";
 
 async function cadastrarCliente() {
   const form = document.getElementById("formCadastro");

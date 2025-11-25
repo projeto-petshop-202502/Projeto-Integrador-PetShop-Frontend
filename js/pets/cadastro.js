@@ -1,4 +1,4 @@
-import { apiPost } from "../api.js";
+import { apiPost } from "../api";
 
 async function cadastrarPet() {
   const form = document.getElementById("formPet");
@@ -25,3 +25,13 @@ async function cadastrarPet() {
     alert("Erro ao cadastrar pet.");
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("formPet");
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      cadastrarPet();
+    });
+  }
+});

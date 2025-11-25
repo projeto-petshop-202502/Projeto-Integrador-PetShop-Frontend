@@ -8,25 +8,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJd/rB0Jc65G6tM0fF5dO8C8r8J3x8f8E8qI8F5aL4P5aL4I4z9E9t5p9p9p9w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="../css/style.css"> 
 </head>
 <body>
     <header class="main-header">
         <nav class="container nav-content" aria-label="Navegação Principal">
             <div class="logo-container">
-                <a href="index.html" class="flex items-center space-x-2">
-                    <img src="assets/img/logo-petcare.png" alt="Logo PetCare" class="h-16 w-16">
+                <a href="../index.html" class="flex items-center space-x-2">
+                    <img src="../assets/img/logo-petcare.png" alt="Logo PetCare" class="h-16 w-16">
                     <h1>PetCare</h1>
                 </a>
             </div>
             
             <ul class="nav-links" role="menubar">
-                <li role="none"><a href="index.html" class="nav-btn nav-btn-active" role="menuitem">Início</a></li>
-                <li role="none"><a href="pages/banhoetosa.html" class="nav-btn" role="menuitem">Banho & Tosa</a></li>
-                <li role="none"><a href="pages/cadastro.html" class="nav-btn" role="menuitem">Cadastro</a></li>
-                <li role="none"><a href="pages/login.html" class="nav-btn" role="menuitem">Login</a></li>
-                <li role="none"><a href="pages/contato.html" class="nav-btn" role="menuitem">Contato</a></li>
-                <li role="none"><a href="pages/sobre.html" class="nav-btn" role="menuitem">Sobre</a></li>
+                <li role="none">
+                    <a href="../index.html" class="nav-btn " role="menuitem">Início</a>
+                </li>
+                <li role="none" id="linkBanhoTosa" class="hidden">
+                    <a href="banhoetosa.html" class="nav-btn" role="menuitem">Banho & Tosa</a>
+                </li>
+                <li role="none" id="linkAreaCliente" class="hidden">
+                    <a href="area-cliente.html" class="nav-btn nav-btn-active" role="menuitem">Área do Cliente</a>
+                </li>
+                <li role="none">
+                    <a href="cadastro.html" class="nav-btn" role="menuitem">Cadastro</a>
+                </li>
+                <li role="none" id="linkLogin">
+                    <a href="login.html" class="nav-btn" role="menuitem">Login</a>
+                </li>
+                <li role="none" id="linkLogout" class="hidden">
+                    <a href="#" onclick="logout()" class="nav-btn" role="menuitem">Sair</a>
+                </li>
+                <li role="none"><a href="contato.html" class="nav-btn" role="menuitem">Contato</a>
+                </li>
+                <li role="none"><a href="sobre.html" class="nav-btn" role="menuitem">Sobre</a>
+                </li>
+
             </ul>
             
             <button aria-label="Abrir menu mobile" onclick="toggleMobileMenu()" class="menu-toggle">
@@ -34,25 +51,52 @@
             </button>
         </nav>
         
-        <div id="mobileMenu" class="mobile-menu hidden" role="menu" aria-label="Menu Mobile">
-            <a href="index.html" role="menuitem">Início</a>
-            <a href="pages/banhoetosa.html" role="menuitem">Banho & Tosa</a>
-            <a href="pages/cadastro.html" role="menuitem">Cadastro</a>
-            <a href="pages/login.html" role="menuitem">Login</a>
-            <a href="pages/contato.html" role="menuitem">Contato</a>
-            <a href="pages/sobre.html" role="menuitem">Sobre</a>
+    <div id="mobileMenu" class="mobile-menu hidden" role="menu" aria-label="Menu Mobile">
+            <a href="../index.html" role="menuitem">Início</a>
+            <a href="banhoetosa.html" id="mobileBanhoTosa" class="hidden" role="menuitem">Banho & Tosa</a>
+            <a href="area-cliente.html" id="mobileAreaCliente" class="hidden" role="menuitem">Área do Cliente</a>
+            <a href="cadastro.html" role="menuitem">Cadastro</a>
+            <a href="login.html" id="mobileLogin" role="menuitem">Login</a>
+            <a href="#" id="mobileLogout" onclick="logout()" class="hidden" role="menuitem">Sair</a>
+            <a href="contato.html" role="menuitem">Contato</a>
+            <a href="sobre.html" role="menuitem">Sobre</a>
         </div>
     </header>
 
     <main>
-        
+        <main>
+        <section id="homePage" class="page" aria-labelledby="home-heading">
+            <div class="hero-section">
+                <div class="container">
+                    <h1 id="home-heading">Bem-vindo ao PetCare</h1>
+                    <p class="text-xl">O melhor cuidado para seu melhor amigo</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="pages/banhoetosa.html" class="btn btn-secondary">Agendamentos</a>
+                        <a href="pages/banhoetosa.html" class="btn btn-secondary">Cadastrar Pet</a>
+                    </div>
+                </div>
+            </div>
+
+            <section class="services-preview">
+                <div class="container">
+                    <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">Nossos Serviços</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        
+                        <article class="service-card" aria-label="Serviço de Banho e Tosa">
+                            <div class="text-4xl mb-4 text-yellow-500"><i class="fa-solid fa-bath"></i></div>
+                            <h3 class="text-lg">Banho & Tosa</h3>
+                            <p>Serviços profissionais de higiene e estética</p>
+                        </article>
+                        <article class="service-card" aria-label="Serviço de Cuidado Especial">
+                            <div class="text-4xl mb-4 text-yellow-500"><i class="fa-solid fa-heart-pulse"></i></div>
+                            <h3 class="text-lg">Cuidado Especial</h3>
+                            <p>Atendimento personalizado para cada pet</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </section>
     </main>
-
-
-
-
-
-
 
      <footer class="main-footer" role="contentinfo" aria-label="Rodapé da PetCare">
         <div class="container">
@@ -68,7 +112,7 @@
                 <section>
                     <h4 class="font-semibold mb-4 text-yellow-100">Serviços</h4>
                     <ul class="space-y-2 footer-link-list">
-                        <li><a href="pages/banhoetosa.html" class="footer-link">Banho & Tosa</a></li>
+                        <li><a href="banhoetosa.html" class="footer-link">Banho & Tosa</a></li>
                         <li><a href="#" class="footer-link">Consultas Veterinárias</a></li>
                         <li><a href="#" class="footer-link">Vacinação</a></li>
                     </ul>
@@ -77,7 +121,7 @@
                 <section>
                     <h4 class="font-semibold mb-4 text-yellow-100">Contato</h4>
                     <address class="space-y-2 not-italic footer-link-list">
-                        <a href="pages/contato.html" class="footer-link flex items-start space-x-2"><i class="fa-solid fa-location-dot mt-1 text-base"></i><span>Rua dos Pets, 123</span></a>
+                        <a href="contato.html" class="footer-link flex items-start space-x-2"><i class="fa-solid fa-location-dot mt-1 text-base"></i><span>Rua dos Pets, 123</span></a>
                         <a href="tel:+551134567890" class="footer-link flex items-start space-x-2"><i class="fa-solid fa-phone mt-1 text-base"></i><span>(11) 3456-7890</span></a>
                         <a href="https://wa.me/5511998765432" target="_blank" class="footer-link flex items-start space-x-2"><i class="fa-brands fa-whatsapp mt-1 text-base"></i><span>(11) 99876-5432</span></a>
                         <a href="mailto:contato@petcare.com.br" class="footer-link flex items-start space-x-2"><i class="fa-solid fa-envelope mt-1 text-base"></i><span>contato@petcare.com.br</span></a>
@@ -99,7 +143,7 @@
             </div>
         </div>
     </footer>
-
     <script src="script.js"></script>
+    <script src="../js/loginLogout.js"></script>
 </body>
 </html>

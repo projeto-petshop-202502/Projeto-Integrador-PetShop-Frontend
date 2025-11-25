@@ -1,4 +1,3 @@
-// js/api.js
 const API_BASE_URL = "https://projeto-integrador-petshop-backend.onrender.com";
 
 async function apiGet(endpoint) {
@@ -36,6 +35,5 @@ async function apiDelete(endpoint, data) {
   if (!response.ok) throw new Error("Erro na requisição DELETE");
   return await response.json();
 }
-
 
 export { apiGet, apiPost, apiPut, apiDelete };

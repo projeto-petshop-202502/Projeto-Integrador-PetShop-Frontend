@@ -21,27 +21,54 @@
             </div>
             
             <ul class="nav-links" role="menubar">
-                <li role="none"><a href="../index.html" class="nav-btn" role="menuitem">Início</a></li>
-                <li role="none"><a href="banhoetosa.html" class="nav-btn" role="menuitem">Banho & Tosa</a></li>
-                <li role="none"><a href="cadastro.html" class="nav-btn" role="menuitem">Cadastro</a></li>
-                <li role="none"><a href="login.html" class="nav-btn nav-btn-active" role="menuitem">Login</a></li>
-                <li role="none"><a href="contato.html" class="nav-btn" role="menuitem">Contato</a></li>
-                <li role="none"><a href="sobre.html" class="nav-btn" role="menuitem">Sobre</a></li>
+                <li><a href="../index.html" class="nav-btn" role="menuitem">Início</a></li>
+
+                <li id="linkCadastro" class="hidden"><a href="cadastro.html" class="nav-btn" >Cadastro</a></li>
+
+                <li id="linkCadastroPet" class="hidden">
+                    <a href="cadastroPet.html" class="nav-btn">Cadastro Pet</a>
+                </li>
+
+                <li id="linkBanhoTosa" class="hidden">
+                    <a href="banhoetosa.html" class="nav-btn">Banho & Tosa</a>
+                </li>
+
+                <li id="linkAreaCliente" class="hidden">
+                    <a href="areaCliente.html" class="nav-btn">Área do Cliente</a>
+                </li>
+
+                <li><a href="contato.html" class="nav-btn">Contato</a></li>
+                <li><a href="sobre.html" class="nav-btn">Sobre</a></li>
+
+                <li id="linkLogin">
+                    <a href="login.html" class="nav-btn">Login</a>
+                </li>
+
+                <li id="linkLogout" class="hidden">
+                    <a href="#" onclick="logout()" class="nav-btn">Sair</a>
+                </li>
             </ul>
+
             
             <button aria-label="Abrir menu mobile" onclick="toggleMobileMenu()" class="menu-toggle">
                 <i class="fa-solid fa-bars w-6 h-6"></i>
             </button>
         </nav>
         
-        <div id="mobileMenu" class="mobile-menu hidden" role="menu" aria-label="Menu Mobile">
-            <a href="../index.html" role="menuitem">Início</a>
-            <a href="banhoetosa.html" role="menuitem">Banho & Tosa</a>
-            <a href="cadastro.html" role="menuitem">Cadastro</a>
-            <a href="login.html" role="menuitem">Login</a>
-            <a href="contato.html" role="menuitem">Contato</a>
-            <a href="sobre.html" role="menuitem">Sobre</a>
+        <div id="mobileMenu" class="mobile-menu hidden">
+            <a href="../index.html">Início</a>
+            <a href="cadastro.html" id="mobileCadastro" class="hidden">Cadastro</a>
+            <a href="cadastroPet.html" id="mobileCadastroPet" class="hidden">Cadastro Pet</a>
+            <a href="banhoetosa.html" id="mobileBanhoTosa" class="hidden">Banho & Tosa</a>
+            <a href="areaCliente.html" id="mobileAreaCliente" class="hidden">Área do Cliente</a>
+
+            <a href="contato.html">Contato</a>
+            <a href="sobre.html">Sobre</a>
+
+            <a href="login.html" id="mobileLogin">Login</a>
+            <a href="#" id="mobileLogout" class="hidden" onclick="logout()">Sair</a>
         </div>
+
     </header>
 
     <main>
@@ -50,14 +77,14 @@
                 <h1 id="login-heading" class="text-4xl font-bold text-center mb-12 text-blue-900">Acesso ao Cliente</h1>
                 
                 <div class="bg-white p-8 rounded-lg shadow-xl">
-                    <form onsubmit="submitLogin(event)" class="space-y-6" aria-label="Formulário de Login">
+                    <form id="formLogin" name="formLogin" class="space-y-6" aria-label="Formulário de Login">
                         <div>
                             <label for="loginEmail" class="block text-sm font-medium mb-1">Email</label>
-                            <input type="email" id="loginEmail" required class="form-input" placeholder="seu.email@exemplo.com">
+                            <input type="email" id="email" name="email" required class="form-input" placeholder="seu.email@exemplo.com">
                         </div>
                         <div>
                             <label for="loginPassword" class="block text-sm font-medium mb-1">Senha</label>
-                            <input type="password" id="loginPassword" required class="form-input" placeholder="••••••••">
+                            <input type="password" id="senha" name="senha" required class="form-input" placeholder="••••••••">
                         </div>
                         <button type="submit" class="btn-full">Entrar</button>
                         <p class="text-center text-sm mt-4">
@@ -114,7 +141,7 @@
             </div>
         </div>
     </footer>
-
-    <script src="../script.js"></script>
+    <script src="../js/public/loginLogout.js"></script>
+    <script type="module" src="../js/login.js"></script>
 </body>
 </html>

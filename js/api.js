@@ -1,7 +1,5 @@
-const API_BASE_URL = process.env.NODE_ENV === 'development'
-  ? "http://localhost:3000"
-  : "https://projeto-integrador-petshop-backend.onrender.com";
-
+/*"https://projeto-integrador-petshop-backend.onrender.com";*/
+const API_BASE_URL = "http://localhost:3000"
 async function apiGet(endpoint) {
   const response = await fetch(`${API_BASE_URL}${endpoint}`);
   if (!response.ok) throw new Error("Erro na requisição GET");

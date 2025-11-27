@@ -18,7 +18,7 @@ async function loginCliente() {
     alert("Login realizado com sucesso!");
     console.log("Resposta da API:", resposta);
 
-    window.location.href = "./dashboard.html";
+    window.location.href = "../pages/areaCliente.html";
   } catch (erro) {
     console.error("Erro no login:", erro);
     alert("Email ou senha inválidos. Tente novamente.");

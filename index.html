@@ -14,34 +14,61 @@
     <header class="main-header">
         <nav class="container nav-content" aria-label="Navegação Principal">
             <div class="logo-container">
-                <a href="index.html" class="flex items-center space-x-2">
-                    <img src="assets/img/logo-petcare.png" alt="Logo PetCare" class="h-16 w-16">
+                <a href="./index.html" class="flex items-center space-x-2">
+                    <img src="../assets/img/logo-petcare.png" alt="Logo PetCare" class="h-16 w-16">
                     <h1>PetCare</h1>
                 </a>
             </div>
             
             <ul class="nav-links" role="menubar">
-                <li role="none"><a href="index.html" class="nav-btn nav-btn-active" role="menuitem">Início</a></li>
-                <li role="none"><a href="pages/banhoetosa.html" class="nav-btn" role="menuitem">Banho & Tosa</a></li>
-                <li role="none"><a href="pages/cadastro.html" class="nav-btn" role="menuitem">Cadastro</a></li>
-                <li role="none"><a href="pages/login.html" class="nav-btn" role="menuitem">Login</a></li>
-                <li role="none"><a href="pages/contato.html" class="nav-btn" role="menuitem">Contato</a></li>
-                <li role="none"><a href="pages/sobre.html" class="nav-btn" role="menuitem">Sobre</a></li>
+                <li><a href="./index.html" class="nav-btn" role="menuitem">Início</a></li>
+
+                <li id="linkCadastro" class="hidden"><a href="./pages/cadastro.html" class="nav-btn">Cadastro</a></li>
+
+                <li id="linkCadastroPet" class="hidden">
+                    <a href="./pages/cadastroPet.html" class="nav-btn">Cadastro Pet</a>
+                </li>
+
+                <li id="linkBanhoTosa" class="hidden">
+                    <a href="./pages/banhoetosa.html" class="nav-btn">Banho & Tosa</a>
+                </li>
+
+                <li id="linkAreaCliente" class="hidden">
+                    <a href="./pages/areaCliente.html" class="nav-btn">Área do Cliente</a>
+                </li>
+
+                <li><a href="./pages/contato.html" class="nav-btn">Contato</a></li>
+                <li><a href="./pages/sobre.html" class="nav-btn">Sobre</a></li>
+
+                <li id="linkLogin">
+                    <a href="./pages/login.html" class="nav-btn">Login</a>
+                </li>
+
+                <li id="linkLogout" class="hidden">
+                    <a href="#" onclick="logout()" class="nav-btn">Sair</a>
+                </li>
             </ul>
+
             
             <button aria-label="Abrir menu mobile" onclick="toggleMobileMenu()" class="menu-toggle">
                 <i class="fa-solid fa-bars w-6 h-6"></i>
             </button>
         </nav>
         
-        <div id="mobileMenu" class="mobile-menu hidden" role="menu" aria-label="Menu Mobile">
-            <a href="index.html" role="menuitem">Início</a>
-            <a href="pages/banhoetosa.html" role="menuitem">Banho & Tosa</a>
-            <a href="pages/cadastro.html" role="menuitem">Cadastro</a>
-            <a href="pages/login.html" role="menuitem">Login</a>
-            <a href="pages/contato.html" role="menuitem">Contato</a>
-            <a href="pages/sobre.html" role="menuitem">Sobre</a>
+        <div id="mobileMenu" class="mobile-menu hidden">
+            <a href="./index.html">Início</a>
+            <a href="./pages/cadastro.html" id="mobileCadastro" class="hidden">Cadastro</a>
+            <a href="./pages/cadastroPet.html" id="mobileCadastroPet" class="hidden">Cadastro Pet</a>
+            <a href="./pages/banhoetosa.html" id="mobileBanhoTosa" class="hidden">Banho & Tosa</a>
+            <a href="./pages/areaCliente.html" id="mobileAreaCliente" class="hidden">Área do Cliente</a>
+
+            <a href="./pages/contato.html">Contato</a>
+            <a href="./pages/sobre.html">Sobre</a>
+
+            <a href="./pages/login.html" id="mobileLogin">Login</a>
+            <a href="#" id="mobileLogout" class="hidden" onclick="logout()">Sair</a>
         </div>
+
     </header>
 
     <main>
@@ -51,7 +78,6 @@
                     <h1 id="home-heading">Bem-vindo ao PetCare</h1>
                     <p class="text-xl">O melhor cuidado para seu melhor amigo</p>
                     <div class="flex justify-center space-x-4">
-                        <a href="pages/banhoetosa.html" class="btn btn-secondary">Agendar Banho</a>
                     </div>
                 </div>
             </div>
@@ -128,5 +154,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="../js/public/loginLogout.js"></script>
 </body>
 </html>

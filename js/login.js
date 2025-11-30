@@ -1,4 +1,4 @@
-import { apiPost } from "./api.js";
+import api from "./api.js";
 
 async function loginCliente() {
   const form = document.getElementById("formLogin");
@@ -8,12 +8,17 @@ async function loginCliente() {
     email: formData.get("email"),
     senha: formData.get("senha")
   };
-
+  console.log("Credenciais sendo enviadas:", credenciais);
   try {
-    const resposta = await apiPost("/clientes/login", credenciais);
+    const resposta = await api.post("/clientes/login", credenciais);
 
-    localStorage.setItem("userId", resposta.id);
+    console.log("Resposta da API (Token):", resposta.data.token);
+    localStorage.setItem("authToken", resposta.data.token);
+    localStorage.setItem("userId", resposta.data.id);
     localStorage.setItem("userTipo", "cliente");
+    const tokenSalvo = localStorage.getItem("authToken"); 
+    console.log("Token salvo no LocalStorage:", tokenSalvo);
+
 
     alert("Login realizado com sucesso!");
     console.log("Resposta da API:", resposta);

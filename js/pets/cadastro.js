@@ -1,4 +1,4 @@
-import { apiPost } from "../api";
+import api from "../api.js";
 
 async function cadastrarPet() {
   const form = document.getElementById("formPet");
@@ -17,12 +17,15 @@ async function cadastrarPet() {
   };
 
   try {
-    const res = await apiPost("/pets/cadastro", novoPet);
+    const res = await api.post("/pet/cadastro", novoPet);
     alert("Pet cadastrado com sucesso!");
     form.reset();
   } catch (err) {
     console.error("Erro ao cadastrar pet:", err);
-    alert("Erro ao cadastrar pet.");
+    alert(
+      `Erro ao cadastrar pet:\n` +
+      `${err.message || "Erro desconhecido"}`
+    );
   }
 }
 

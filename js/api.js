@@ -80,22 +80,22 @@ export { apiGet, apiPost, apiPut, apiDelete };*/
 
 // 1. Cria a instância do Axios com a URL base
 const api = axios.create({
-  baseURL: "http://localhost:3000",
+   baseURL: "http://localhost:3000",
 });
 
 // 2. Interceptor para anexar o token em TODAS as requisições
 api.interceptors.request.use(
-  (config) => {
-    // Corrigido para a chave que você está SALVANDO no login.js
-    const token = localStorage.getItem("authToken"); 
-    
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    // Remove credentials: 'omit' pois o Axios já lida com isso de forma limpa.
-    return config;
-  },
-  (error) => Promise.reject(error)
+   (config) => {
+     // Corrigido para a chave que você está SALVANDO no login.js
+     const token = localStorage.getItem("authToken"); 
+     
+     if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+     }
+     // Remove credentials: 'omit' pois o Axios já lida com isso de forma limpa.
+     return config;
+   },
+   (error) => Promise.reject(error)
 );
 
 // 3. Exporta a instância para ser usada em qualquer lugar

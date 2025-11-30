@@ -14,7 +14,6 @@ async function loginCliente() {
 
     console.log("Resposta da API (Token):", resposta.data.token);
     localStorage.setItem("authToken", resposta.data.token);
-    localStorage.setItem("userId", resposta.data.id);
     localStorage.setItem("userCpf", resposta.data.cpf);
     localStorage.setItem("userTipo", "cliente");
     const tokenSalvo = localStorage.getItem("authToken"); 
@@ -22,7 +21,6 @@ async function loginCliente() {
 
 
     alert("Login realizado com sucesso!");
-    console.log("Resposta da API:", resposta);
 
     window.location.href = "../pages/areaCliente.html";
   } catch (erro) {

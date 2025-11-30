@@ -15,6 +15,7 @@ async function loginCliente() {
     console.log("Resposta da API (Token):", resposta.data.token);
     localStorage.setItem("authToken", resposta.data.token);
     localStorage.setItem("userId", resposta.data.id);
+    localStorage.setItem("userCpf", resposta.data.cpf);
     localStorage.setItem("userTipo", "cliente");
     const tokenSalvo = localStorage.getItem("authToken"); 
     console.log("Token salvo no LocalStorage:", tokenSalvo);

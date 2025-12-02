@@ -1,6 +1,6 @@
 import api from "./api.js";
 
-async function loginCliente() {
+async function login() {
   const form = document.getElementById("formLogin");
   const formData = new FormData(form);
 
@@ -8,21 +8,28 @@ async function loginCliente() {
     email: formData.get("email"),
     senha: formData.get("senha")
   };
-  console.log("Credenciais sendo enviadas:", credenciais);
+
   try {
-    const resposta = await api.post("/clientes/login", credenciais);
+    const resposta = await api.post("/login", credenciais);
 
-    console.log("Resposta da API (Token):", resposta.data.token);
-    localStorage.setItem("authToken", resposta.data.token);
-    localStorage.setItem("userCpf", resposta.data.cpf);
-    localStorage.setItem("userTipo", "cliente");
-    const tokenSalvo = localStorage.getItem("authToken"); 
-    console.log("Token salvo no LocalStorage:", tokenSalvo);
+    const dados = resposta.data;
 
+    localStorage.setItem("authToken", dados.token);
+    localStorage.setItem("userTipo", dados.tipo);
 
-    alert("Login realizado com sucesso!");
+    if (dados.tipo === "cliente") {
+      localStorage.setItem("userCpf", dados.cpf);
+      alert("Login realizado como cliente!");
+      window.location.href = "../pages/areaCliente.html";
+    }
 
-    window.location.href = "../pages/areaCliente.html";
+    if (dados.tipo === "funcionario") {
+      localStorage.setItem("userId", dados.id);
+      localStorage.setItem("userCargo", dados.cargo);
+      alert("Login realizado como funcionário!");
+      window.location.href = "../pages/areaFuncionario.html";
+    }
+
   } catch (erro) {
     console.error("Erro no login:", erro);
     alert("Email ou senha inválidos. Tente novamente.");
@@ -34,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      loginCliente();
+      login();
     });
   }
 });

@@ -57,4 +57,6 @@ function logout() {
     window.location.href = "../index.html";
 }
 
-document.addEventListener("DOMContentLoaded", atualizarMenu);
+document.addEventListener("DOMContentLoaded", () =>{
+    atualizarMenu();
+});

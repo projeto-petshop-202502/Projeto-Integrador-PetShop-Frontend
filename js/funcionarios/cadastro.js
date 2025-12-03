@@ -1,4 +1,4 @@
-import { apiPost } from "../api.js";
+import api from "../api.js";
 
 async function cadastrarFuncionario() {
   const form = document.getElementById("formFuncionario");
@@ -13,7 +13,8 @@ async function cadastrarFuncionario() {
   };
 
   try {
-    const resposta = await apiPost("/funcionarios/cadastro", novoFuncionario);
+    const resposta = await api.post("/funcionarios/cadastro", novoFuncionario);
+
     alert("Funcionário cadastrado com sucesso!");
     console.log("Resposta da API:", resposta);
     form.reset();

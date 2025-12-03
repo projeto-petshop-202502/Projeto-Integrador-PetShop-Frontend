@@ -8,6 +8,8 @@ function atualizarMenu() {
     const linkLogin = document.getElementById("linkLogin");
     const linkLogout = document.getElementById("linkLogout");
     const linkCadastro = document.getElementById("linkCadastro");
+    const linkAreaFuncionario = document.getElementById("linkAreaFuncionario");
+    const linkCadastroFuncionario = document.getElementById("linkCadastroFuncionario");
 
     // MOBILE
     const mobileBanhoTosa = document.getElementById("mobileBanhoTosa");
@@ -18,8 +20,10 @@ function atualizarMenu() {
     const mobileCadastro = document.getElementById("mobileCadastro");
 
     // Reset
-    [linkBanhoTosa, linkCadastroPet, linkAreaCliente, linkLogout].forEach(e => e.classList.add("hidden"));
+    [linkBanhoTosa, linkCadastroPet, linkAreaCliente, linkLogout, linkCadastroFuncionario, linkAreaFuncionario].forEach(e => e.classList.add("hidden"));
+    
     [mobileBanhoTosa, mobileCadastroPet, mobileAreaCliente, mobileLogout].forEach(e => e.classList.add("hidden"));
+
     linkLogin.classList.remove("hidden");
     mobileLogin.classList.remove("hidden");
     linkCadastro.classList.remove("hidden");
@@ -37,10 +41,8 @@ function atualizarMenu() {
     }
 
     if (userTipo === "funcionario") {
-        linkBanhoTosa.classList.remove("hidden");
-        mobileBanhoTosa.classList.remove("hidden");
-        linkCadastroPet.classList.remove("hidden");
-        mobileCadastroPet.classList.remove("hidden");
+        linkCadastroFuncionario.classList.remove("hidden");
+        linkAreaFuncionario.classList.remove("hidden");
     }
 
     linkLogin.classList.add("hidden");
@@ -52,8 +54,12 @@ function atualizarMenu() {
 }
 
 function logout() {
-    localStorage.removeItem("token");
+    localStorage.removeItem("authToken");
     localStorage.removeItem("userTipo");
+    localStorage.removeItem("userCargo");
+    localStorage.removeItem("userCpf");
+    localStorage.removeItem("userId");
+
     window.location.href = "../index.html";
 }
 

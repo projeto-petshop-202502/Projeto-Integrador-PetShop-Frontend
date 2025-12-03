@@ -17,7 +17,9 @@ async function cadastrarPet() {
   };
 
   try {
-    const res = await api.post("/pet/cadastro", novoPet);
+    const resposta = await api.post("/pet/cadastro", novoPet);
+    console.log("Resposta da API:", resposta);
+
     alert("Pet cadastrado com sucesso!");
     form.reset();
   } catch (err) {

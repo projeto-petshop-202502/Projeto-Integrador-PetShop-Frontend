@@ -1,18 +1,25 @@
-import { apiGet } from "../api.js";
+import api from "../api.js";
 
 async function listarMeusPets() {
   try {
-    const pets = await apiGet("/pets/meus");
+    const resposta = await api.get("/pets/meus");
+    const pets = resposta.data; 
+    
     const lista = document.getElementById("listaPets");
-    lista.innerHTML = "";
+    lista.innerHTML = '<option value="">Selecione o pet</option>';;
 
     pets.forEach(pet => {
-      const li = document.createElement("li");
-      li.textContent = `${pet.nome} (${pet.raca})`;
-      lista.appendChild(li);
+      const option = document.createElement("option");
+      option.value = pet.id_pet
+      option.textContent = `${pet.nome} (${pet.raca})`;
+      lista.appendChild(option);
     });
   } catch (err) {
     console.error("Erro ao listar pets:", err);
     alert("Erro ao carregar seus pets.");
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    listarMeusPets();
+});

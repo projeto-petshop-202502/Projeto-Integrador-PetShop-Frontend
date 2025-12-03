@@ -1,4 +1,4 @@
-import { apiPost } from "../api.js";
+import api from "../api.js";
 
 async function cadastrarCliente() {
   const form = document.getElementById("formCadastro");
@@ -20,7 +20,7 @@ async function cadastrarCliente() {
   };
 
   try {
-    const resposta = await apiPost("/clientes/cadastro", novoCliente);
+    const resposta = await api.post("/clientes/cadastro", novoCliente);
     alert("Cliente cadastrado com sucesso!");
     console.log("Resposta da API:", resposta);
     form.reset();

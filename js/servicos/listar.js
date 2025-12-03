@@ -1,18 +1,37 @@
-import { apiGet } from "../api.js";
+import api from "../api.js";
 
 async function listarServicos() {
-  try {
-    const servicos = await apiGet("/servicos");
-    const lista = document.getElementById("listaServicos");
-    lista.innerHTML = "";
+    try {
+        const resposta = await api.get("/servicos");
+        const servicos = resposta.data;
 
-    servicos.forEach(s => {
-      const li = document.createElement("li");
-      li.textContent = `${s.nome} - R$ ${s.preco.toFixed(2)}`;
-      lista.appendChild(li);
-    });
-  } catch (err) {
-    console.error("Erro ao listar serviços:", err);
-    alert("Erro ao carregar serviços.");
-  }
+        // ⭐ Lista da esquerda
+        const listaEsquerda = document.querySelector(".lista-servicos");
+        listaEsquerda.innerHTML = ""; 
+
+        servicos.forEach(servico => {
+            const li = document.createElement("li");
+            li.textContent = `${servico.nome_servico} - R$ ${servico.valor}`;
+            listaEsquerda.appendChild(li);
+        });
+
+        // ⭐ Select do formulário
+        const selectFormulario = document.getElementById("selectServicos");
+        selectFormulario.innerHTML = '<option value="">Selecione o serviço</option>';
+
+        servicos.forEach(servico => {
+            const option = document.createElement("option");
+            option.value = servico.id_servico;
+            option.textContent = `${servico.nome_servico}`;
+            selectFormulario.appendChild(option);
+        });
+
+    } catch (erro) {
+        console.error("Erro ao carregar serviços:", erro);
+        alert("Não foi possível carregar os serviços.");
+    }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    listarServicos();
+});

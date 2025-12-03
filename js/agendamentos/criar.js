@@ -1,14 +1,16 @@
-import { apiPost } from "../api.js";
+import api from "../api.js";
 
-async function criarAgendamento() {
-  const form = document.getElementById("formAgendamento");
-  const formData = new FormData(form);
+async function criarAgendamento(e) {
+  e.preventDefault();
 
-  const id_pet = parseInt(formData.get("id_pet"));
-  const id_servico = parseInt(formData.get("id_servico"));
-  const data_hora = formData.get("data_hora");
-  const id_profissional = formData.get("id_profissional") ? parseInt(formData.get("id_profissional")) : null;
-  const observacoes = formData.get("observacoes");
+  const id_pet = document.getElementById("selectPet").value;
+  const id_servico = document.getElementById("selectServico").value;
+  const id_profissional = document.getElementById("selectProfissional").value || null;
+  const data = document.getElementById("data").value;
+  const hora = document.getElementById("hora").value;
+  const observacoes = document.getElementById("notes").value;
+
+  const data_hora = `${data} ${hora}`;
 
   const novoAgendamento = {
     id_pet,
@@ -19,7 +21,7 @@ async function criarAgendamento() {
   };
 
   try {
-    const resposta = await apiPost("/agendamento/criar", novoAgendamento);
+    const resposta = await api.post("/agendamento/criar", novoAgendamento);
     alert("Agendamento criado com sucesso!");
     console.log("Resposta da API:", resposta);
     form.reset();
@@ -29,12 +31,4 @@ async function criarAgendamento() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("formAgendamento");
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      criarAgendamento();
-    });
-  }
-});
+document.getElementById("formAgendamento").addEventListener("submit", criarAgendamento);

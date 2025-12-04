@@ -10,6 +10,7 @@ function atualizarMenu() {
     const linkCadastro = document.getElementById("linkCadastro");
     const linkAreaFuncionario = document.getElementById("linkAreaFuncionario");
     const linkCadastroFuncionario = document.getElementById("linkCadastroFuncionario");
+    const linkCadastroServico = document.getElementById("linkCadastroServico");
 
     // MOBILE
     const mobileBanhoTosa = document.getElementById("mobileBanhoTosa");
@@ -20,7 +21,7 @@ function atualizarMenu() {
     const mobileCadastro = document.getElementById("mobileCadastro");
 
     // Reset
-    [linkBanhoTosa, linkCadastroPet, linkAreaCliente, linkLogout, linkCadastroFuncionario, linkAreaFuncionario].forEach(e => e.classList.add("hidden"));
+    [linkBanhoTosa, linkCadastroPet, linkAreaCliente, linkLogout, linkCadastroFuncionario, linkAreaFuncionario, linkCadastroServico].forEach(e => e.classList.add("hidden"));
     
     [mobileBanhoTosa, mobileCadastroPet, mobileAreaCliente, mobileLogout].forEach(e => e.classList.add("hidden"));
 
@@ -43,6 +44,7 @@ function atualizarMenu() {
     if (userTipo === "funcionario") {
         linkCadastroFuncionario.classList.remove("hidden");
         linkAreaFuncionario.classList.remove("hidden");
+        linkCadastroServico.classList.remove("hidden");
     }
 
     linkLogin.classList.add("hidden");

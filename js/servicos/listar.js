@@ -22,6 +22,7 @@ async function listarServicos() {
         servicos.forEach(servico => {
             const option = document.createElement("option");
             option.value = servico.id_servico;
+            option.dataset.categoria = servico.categoria;
             option.textContent = `${servico.nome_servico}`;
             selectFormulario.appendChild(option);
         });

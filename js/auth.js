@@ -1,4 +1,3 @@
-// js/auth.js
 export function protegerPagina(tipoNecessario) {
   const userTipo = localStorage.getItem("userTipo");
 

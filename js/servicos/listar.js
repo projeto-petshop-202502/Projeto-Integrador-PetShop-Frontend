@@ -5,7 +5,6 @@ async function listarServicos() {
         const resposta = await api.get("/servicos");
         const servicos = resposta.data;
 
-        // ⭐ Lista da esquerda
         const listaEsquerda = document.querySelector(".lista-servicos");
         listaEsquerda.innerHTML = ""; 
 

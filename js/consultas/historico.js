@@ -1,4 +1,4 @@
-import { apiGet } from "../api.js";
+import api from "../api.js";
 
 async function buscarHistoricoConsultas() {
   const form = document.getElementById("formHistorico");
@@ -7,7 +7,7 @@ async function buscarHistoricoConsultas() {
   const idPet = formData.get("id_pet");
 
   try {
-    const resposta = await apiGet(`/consulta/historico${idPet ? `?idPet=${idPet}` : ""}`);
+    const resposta = await api.get(`/consulta/historico${idPet ? `?idPet=${idPet}` : ""}`);
 
     const lista = document.getElementById("listaConsultas");
     lista.innerHTML = "";

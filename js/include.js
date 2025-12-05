@@ -4,6 +4,6 @@ async function incluir(component, file, callback) {
     elemento.innerHTML = html;
 
     if (callback && typeof callback === "function") {
-        callback(); // 🔥 Executa somente depois que o header for carregado!
+        callback();
     }
 }

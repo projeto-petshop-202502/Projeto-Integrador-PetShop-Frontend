@@ -1,4 +1,4 @@
-import { apiGet } from "../api.js";
+import api from "../api.js";
 
 async function listarConsultas() {
   const form = document.getElementById("formConsultas");
@@ -12,7 +12,7 @@ async function listarConsultas() {
   if (idProfissional) params.append("idProfissional", idProfissional);
 
   try {
-    const resposta = await apiGet(`/consulta?${params.toString()}`);
+    const resposta = await api.get(`/consulta?${params.toString()}`);
 
     const lista = document.getElementById("listaConsultas");
     lista.innerHTML = "";

@@ -1,4 +1,4 @@
-import { apiGet } from "../api.js";
+import api from "../api.js";
 
 async function listarAgendamentos() {
   const form = document.getElementById("formAgendamentos");
@@ -16,7 +16,7 @@ async function listarAgendamentos() {
   if (status) params.append("status", status);
 
   try {
-    const resposta = await apiGet(`/agendamentos?${params.toString()}`);
+    const resposta = await api.get(`/agendamentos?${params.toString()}`);
 
     const lista = document.getElementById("listaAgendamentos");
     lista.innerHTML = "";

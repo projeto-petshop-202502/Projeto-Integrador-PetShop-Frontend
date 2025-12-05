@@ -2,7 +2,6 @@ function atualizarMenu() {
     const userTipo = localStorage.getItem("userTipo");
     const userCargo = localStorage.getItem("userCargo"); 
 
-    // MENU PRINCIPAL
     const linkBanhoTosa = document.getElementById("linkBanhoTosa");
     const linkCadastroPet = document.getElementById("linkCadastroPet");
     const linkAreaCliente = document.getElementById("linkAreaCliente");
@@ -14,7 +13,6 @@ function atualizarMenu() {
     const linkCadastroServico = document.getElementById("linkCadastroServico");
     const linkCriarConsulta = document.getElementById("linkCriarConsulta");
 
-    // MOBILE
     const mobileBanhoTosa = document.getElementById("mobileBanhoTosa");
     const mobileCadastroPet = document.getElementById("mobileCadastroPet");
     const mobileAreaCliente = document.getElementById("mobileAreaCliente");
@@ -22,7 +20,6 @@ function atualizarMenu() {
     const mobileLogout = document.getElementById("mobileLogout");
     const mobileCadastro = document.getElementById("mobileCadastro");
 
-    // Reset
     [linkBanhoTosa, linkCadastroPet, linkAreaCliente, linkLogout, linkCadastroFuncionario, linkAreaFuncionario, linkCadastroServico, linkCriarConsulta].forEach(e => e.classList.add("hidden"));
     
     [mobileBanhoTosa, mobileCadastroPet, mobileAreaCliente, mobileLogout].forEach(e => e.classList.add("hidden"));
@@ -79,3 +76,4 @@ function logout() {
 document.addEventListener("DOMContentLoaded", () =>{
     atualizarMenu();
 });
+

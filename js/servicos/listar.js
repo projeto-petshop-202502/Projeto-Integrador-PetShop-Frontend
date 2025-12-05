@@ -15,7 +15,6 @@ async function listarServicos() {
             listaEsquerda.appendChild(li);
         });
 
-        // ⭐ Select do formulário
         const selectFormulario = document.getElementById("selectServicos");
         selectFormulario.innerHTML = '<option value="">Selecione o serviço</option>';
 

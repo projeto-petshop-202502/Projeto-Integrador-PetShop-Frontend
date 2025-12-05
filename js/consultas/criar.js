@@ -1,4 +1,4 @@
-import { apiPost } from "../api.js";
+import  api from "../api.js";
 
 async function criarConsulta() {
   const form = document.getElementById("formConsulta");
@@ -12,7 +12,7 @@ async function criarConsulta() {
   };
 
   try {
-    const resposta = await apiPost("/consulta/criar", novaConsulta);
+    const resposta = await api.post("/consulta/criar", novaConsulta);
     alert("Consulta registrada com sucesso!");
     console.log("Resposta da API:", resposta);
     form.reset();

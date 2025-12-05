@@ -18,33 +18,34 @@
     <main>
         <section id="registerPage" class="page py-16" aria-labelledby="register-heading">
             <div class="container max-w-2xl">
-                <h1 id="register-heading" class="text-4xl font-bold text-center mb-12 text-blue-900">Cadastro de Serviços</h1>
+                <h1 id="register-heading" class="text-4xl font-bold text-center mb-12 text-blue-900">Consultas</h1>
                 
                 <div class="bg-white p-8 rounded-lg shadow-xl">
-                    <form id="formServico" name="formServico" class="space-y-6" aria-label="Formulário de Cadastro de Serviços">
+                    <form id="formConsulta" name="formConsulta" class="space-y-6" aria-label="Formulário de Criação de Consultas">
                         
-                            <legend class="text-xl font-semibold mb-4 text-blue-800">Informações do serviço</legend>
+                            <legend class="text-xl font-semibold mb-4 text-blue-800">Informações da consulta</legend>
                          
                             <div>
-                                <label for="nome" class="block text-sm font-medium mb-1">Nome do Serviço</label>
-                                <input type="text" id="nome" name="nome" required class="form-input">
+                                <label for="nome" class="block text-sm font-medium mb-1">Número do agendamento</label>
+                                <input type="nummber" id="id_agendamento" name="id_agendamento" placeholder="Digite o número do agendamento" class="form-input">
                             </div>
 
                             <div>
-                                <label for="valor" class="block text-sm font-medium mb-1">Valor</label>
-                                <input type="number" id="valor" name="valor" placeholder="Digite o valor" step="0.01" min="0" required class="form-input">
+                                <label for="valor" class="block text-sm font-medium mb-1">Diagnostico</label>
+                                <input type="text" id="diagnostico" name="diagnostico" placeholder="Digite o diagnostico" required class="form-input">
                             </div>
  
                             <div>
-                                <select id="categoria" name="categoria" required class="form-input">
-                                    <option value="">Selecione</option>
-                                    <option value="Estética">Estética</option>
-                                    <option value="Veterinária">Veterinária</option>
-                                </select>
+                                <label for="valor" class="block text-sm font-medium mb-1">Medicação</label>
+                                <input type="text" id="medicacao" name="medicacao" placeholder="Digite a medicação" class="form-input">
+                            </div>
 
+                            <div>
+                                <label for="valor" class="block text-sm font-medium mb-1">Peso do pet</label>
+                                <input type="number" id="peso_pet" name="peso_pet" placeholder="Digite o peso do pet" step="0.01" min="0" required class="form-input">
                             </div>
                         
-                        <button type="submit" class="btn-full mt-6">Cadastrar Serviço</button>
+                        <button type="submit" class="btn-full mt-6">Criar consulta</button>
                     </form>
                 </div>
             </div>
@@ -58,18 +59,8 @@
         incluir("#header", "./components/header.html", () => {atualizarMenu();});
         incluir("#footer", "./components/footer.html");
     </script>
-
-    <script type="module">
-        import { protegerPagina } from "../js/middleware/authFront.js";
-
-        protegerPagina({
-            login: true,
-            tipo: "funcionario",
-            cargo: "Administrador"
-        });
-    </script>
     
     <script src="../js/public/loginLogout.js"></script>
-    <script type="module" src="../js/servicos/cadastro.js"></script>
+    <script type="module" src="../js/consultas/criar.js"></script>
 </body>
 </html>

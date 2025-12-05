@@ -11,7 +11,7 @@ async function cadastrarServico() {
   };
 
   try {
-    const resposta = await api.post("/servicos/cadastro", novoServico);
+    const resposta = await api.post("/servico/cadastro", novoServico);
     console.log("Resposta da API:", resposta);
     alert("Serviço cadastrado com sucesso!");
     form.reset();

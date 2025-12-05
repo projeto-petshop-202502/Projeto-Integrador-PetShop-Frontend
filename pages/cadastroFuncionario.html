@@ -68,11 +68,18 @@
 
     <script src="../js/include.js"></script>
     <script>
-        incluir("#header", "./components/header.html", () => {
-            atualizarMenu();
-        });
-
+        incluir("#header", "./components/header.html", () => {atualizarMenu();});
         incluir("#footer", "./components/footer.html");
+    </script>
+
+    <script type="module">
+        import { protegerPagina } from "../js/middleware/authFront.js";
+
+        protegerPagina({
+            login: true,
+            tipo: "funcionario",
+            cargo: "Administrador"
+        });
     </script>
     
     <script src="../js/public/loginLogout.js"></script>

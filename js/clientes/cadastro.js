@@ -3,6 +3,7 @@ import api from "../api.js";
 async function cadastrarCliente() {
   const form = document.getElementById("formCadastro");
   const formData = new FormData(form);
+  
 
   const novoCliente = {
     cpf: formData.get("cpf"),
